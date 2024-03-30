@@ -13,12 +13,17 @@ struct MessageRow: View {
 
     var body: some View {
         HStack {
-            userThumb
+            if message.user.isCurrentUser {
+                Spacer()
+                messageState
+                messageText
+            } else {
+                userThumb
+                messageText
+                messageState
+                Spacer()
+            }
 
-            messageText
-
-            messageState
-            Spacer()
         }
         .padding(.bottom)
     }
@@ -46,7 +51,7 @@ extension MessageRow {
 
     private var messageState: some View {
         VStack(alignment: .trailing) {
-            Text(message.readed ? "既読" : "未読")
+            message.user.isCurrentUser == true ? Text(message.readed ? "既読" : "") : nil
             Text(formattedDataString)
         }
         .foregroundColor(.secondary)
@@ -55,8 +60,11 @@ extension MessageRow {
 
     private var formattedDataString: String {
         let formatter = DateFormatter()
-        formatter.timeStyle = .short
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
 
-        return formatter.string(from: Date())
+        guard let date = formatter.date(from: message.date) else { return "" }
+        formatter.dateFormat = "HH:mm"
+
+        return formatter.string(from: date)
     }
 }
