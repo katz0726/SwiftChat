@@ -11,22 +11,43 @@ import SwiftUI
 struct MessageRow: View {
     var body: some View {
         HStack {
-            Image(systemName: "person.circle")
-                .resizable()
-                .frame(width: 48, height: 48)
-            Text("こんにちは！こんにちは！こんにちは！こんにちは！こんにちは！こんにちは！こんにちは！こんにちは！こんにちは！")
-                .padding()
-                .background(.white)
-                .cornerRadius(30)
-            VStack(alignment: .trailing) {
-                Text("既読")
-                Text(formattedDataString)
-            }
-            .foregroundColor(.secondary)
-            .font(.footnote)
+            userThumb
+
+            messageText
+
+            messageState
             Spacer()
         }
         .padding(.bottom)
+    }
+}
+
+#Preview {
+    MessageRow()
+        .background(.cyan)
+}
+
+extension MessageRow {
+    private var userThumb: some View {
+        Image(systemName: "person.circle")
+            .resizable()
+            .frame(width: 48, height: 48)
+    }
+
+    private var messageText: some View {
+        Text("こんにちは！")
+            .padding()
+            .background(.white)
+            .cornerRadius(30)
+    }
+
+    private var messageState: some View {
+        VStack(alignment: .trailing) {
+            Text("既読")
+            Text(formattedDataString)
+        }
+        .foregroundColor(.secondary)
+        .font(.footnote)
     }
 
     private var formattedDataString: String {
@@ -35,8 +56,4 @@ struct MessageRow: View {
 
         return formatter.string(from: Date())
     }
-}
-
-#Preview {
-    MessageRow()
 }
