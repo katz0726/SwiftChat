@@ -16,7 +16,6 @@ class ChatViewModel {
     init() {
         chatData = fetchChatData()
         messages = chatData[0].messages
-        print(messages)
     }
 
     private func fetchChatData() -> [Chat] {

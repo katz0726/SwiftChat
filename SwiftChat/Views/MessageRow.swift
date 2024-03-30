@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct MessageRow: View {
+    let message: Message
+
     var body: some View {
         HStack {
             userThumb
@@ -22,21 +24,21 @@ struct MessageRow: View {
     }
 }
 
-#Preview {
-    MessageRow()
-        .background(.cyan)
-}
+//#Preview {
+//    MessageRow()
+//        .background(.cyan)
+//}
 
 extension MessageRow {
     private var userThumb: some View {
-        Image("user01")
+        Image(message.user.image)
             .resizable()
             .frame(width: 48, height: 48)
             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
     }
 
     private var messageText: some View {
-        Text("こんにちは！")
+        Text(message.text)
             .padding()
             .background(.white)
             .cornerRadius(30)
@@ -44,7 +46,7 @@ extension MessageRow {
 
     private var messageState: some View {
         VStack(alignment: .trailing) {
-            Text("既読")
+            Text(message.readed ? "既読" : "未読")
             Text(formattedDataString)
         }
         .foregroundColor(.secondary)
