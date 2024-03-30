@@ -14,6 +14,7 @@
 		C67995972BB5CDCD00EFD9B5 /* MessageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C67995962BB5CDCD00EFD9B5 /* MessageRow.swift */; };
 		C679959B2BB7CE7E00EFD9B5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = C679959A2BB7CE7E00EFD9B5 /* User.swift */; };
 		C679959D2BB7CEF500EFD9B5 /* DataModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C679959C2BB7CEF500EFD9B5 /* DataModelTest.swift */; };
+		C679959F2BB7D08900EFD9B5 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = C679959E2BB7D08900EFD9B5 /* Message.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		C67995962BB5CDCD00EFD9B5 /* MessageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageRow.swift; sourceTree = "<group>"; };
 		C679959A2BB7CE7E00EFD9B5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		C679959C2BB7CEF500EFD9B5 /* DataModelTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModelTest.swift; sourceTree = "<group>"; };
+		C679959E2BB7D08900EFD9B5 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				C679959A2BB7CE7E00EFD9B5 /* User.swift */,
+				C679959E2BB7D08900EFD9B5 /* Message.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 				C679959D2BB7CEF500EFD9B5 /* DataModelTest.swift in Sources */,
 				C679959B2BB7CE7E00EFD9B5 /* User.swift in Sources */,
 				C67995942BB5C46100EFD9B5 /* ChatView.swift in Sources */,
+				C679959F2BB7D08900EFD9B5 /* Message.swift in Sources */,
 				C67995862BB5C43C00EFD9B5 /* SwiftChatApp.swift in Sources */,
 				C67995972BB5CDCD00EFD9B5 /* MessageRow.swift in Sources */,
 			);

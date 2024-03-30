@@ -11,9 +11,18 @@ import SwiftUI
 struct DataModelTest: View {
     let user1 = User(id: "1", name: "test user", image: "user02")
 
+    let message = Message(
+        text: "Hello!!",
+        user: User(id: "1", name: "test user", image: "user02"),
+        date: Date(),
+        readed: true
+    )
+
     var body: some View {
         Text(user1.name)
         Image(user1.image)
+
+        Text(message.text)
     }
 }
 
