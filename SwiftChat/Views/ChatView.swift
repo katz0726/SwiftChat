@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct ChatView: View {
+    @State private var textFieldText: String = ""
+
     var body: some View {
         VStack(spacing: 0) {
             // Message Area
@@ -58,16 +60,26 @@ extension ChatView {
 
     private var inputArea: some View {
         HStack {
-            Circle()
-                .frame(width: 40, height: 40)
-            Circle()
-                .frame(width: 40, height: 40)
-            Circle()
-                .frame(width: 40, height: 40)
-            Capsule()
-                .frame(height: 40)
-            Circle()
-                .frame(width: 40, height: 40)
+            HStack {
+                Image(systemName: "plus")
+                Image(systemName: "camera")
+                Image(systemName: "photo")
+            }
+            .font(.title2)
+            TextField("Aa", text: $textFieldText)
+                .padding()
+                .background(Color(uiColor: .secondarySystemBackground))
+                .clipShape(Capsule())
+                .overlay(
+                    Image(systemName: ".face.smiling")
+                        .font(.title2)
+                        .padding(.trailing)
+                        .foregroundColor(.gray)
+
+                    , alignment: .trailing
+                )
+            Image(systemName: "mic")
+                .font(.title2)
         }
         .padding()
         .background(.white)
