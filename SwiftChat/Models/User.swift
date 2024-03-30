@@ -14,6 +14,10 @@ struct User: Decodable {
     let image: String
 
     var isCurrentUser: Bool {
-        self.id == "1"
+        self.id == User.currentUser.id
+    }
+
+    static var currentUser: User {
+        User(id: "1", name: "katz0726", image: "user01")
     }
 }

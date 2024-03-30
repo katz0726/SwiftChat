@@ -10,8 +10,9 @@ import SwiftUI
 
 struct ChatView: View {
     @State private var textFieldText: String = ""
+    @FocusState private var textFieldFocused: Bool
 
-    let vm: ChatViewModel = ChatViewModel()
+    @ObservedObject var vm: ChatViewModel = ChatViewModel()
     var body: some View {
         VStack(spacing: 0) {
             // Message Area
@@ -40,6 +41,9 @@ extension ChatView {
             .padding(.top, 72)
         }
         .background(Color("Background"))
+        .onTapGesture {
+            textFieldFocused = false
+        }
     }
 
     private var navigationArea: some View {
@@ -79,10 +83,21 @@ extension ChatView {
 
                     , alignment: .trailing
                 )
+                .onSubmit {
+                    sendMessage()
+                }
+                .focused($textFieldFocused)
             Image(systemName: "mic")
                 .font(.title2)
         }
         .padding()
         .background(Color(uiColor: .systemBackground))
+    }
+
+    private func sendMessage() {
+        if !textFieldText.isEmpty {
+            vm.addMessage(text: textFieldText)
+            textFieldText = ""
+        }
     }
 }
