@@ -11,6 +11,7 @@ import SwiftUI
 struct ChatView: View {
     @State private var textFieldText: String = ""
 
+    let vm: ChatViewModel = ChatViewModel()
     var body: some View {
         VStack(spacing: 0) {
             // Message Area
