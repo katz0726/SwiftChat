@@ -71,7 +71,7 @@ extension ChatView {
                 .background(Color(uiColor: .secondarySystemBackground))
                 .clipShape(Capsule())
                 .overlay(
-                    Image(systemName: ".face.smiling")
+                    Image(systemName: "face.smiling")
                         .font(.title2)
                         .padding(.trailing)
                         .foregroundColor(.gray)
