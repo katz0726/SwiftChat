@@ -62,24 +62,21 @@ class ChatViewModel: ObservableObject {
 
     func getTitle(messages: [Message]) -> String {
         var title = ""
-        var userIds: [String] = []
+        let names = getMembers(messages: messages, type: .name)
 
-        for message in messages {
-            let id = message.user.id
 
-            // 自分のIDの場合、またはIDが重複する場合はスキップ
-            if  User.currentUser.id == id || userIds.contains(id) { continue }
-
-            userIds.append(id)
-            let name = message.user.name
+        for name in names {
             title += title.isEmpty ? "\(name)" : ", \(name)"
         }
-
         return title
     }
 
     func getImages(messages: [Message]) -> [String] {
-        var images: [String] = []
+        getMembers(messages: messages, type: .image)
+    }
+
+    private func getMembers(messages: [Message], type: ValueType) -> [String] {
+        var members: [String] = []
         var userIds: [String] = []
 
         for message in messages {
@@ -89,10 +86,19 @@ class ChatViewModel: ObservableObject {
             if  User.currentUser.id == id || userIds.contains(id) { continue }
 
             userIds.append(id)
-            
-            let image = message.user.image
-            images.append(image)
+
+            switch type {
+            case .name:
+                members.append(message.user.name)
+            case .image:
+                members.append(message.user.image)
+            }
         }
-        return images
+        return members
+    }
+
+    enum ValueType {
+        case name
+        case image
     }
 }
