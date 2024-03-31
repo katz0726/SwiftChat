@@ -67,7 +67,6 @@ class ChatViewModel: ObservableObject {
         for message in messages {
             let id = message.user.id
 
-
             // 自分のIDの場合、またはIDが重複する場合はスキップ
             if  User.currentUser.id == id || userIds.contains(id) { continue }
 
@@ -77,5 +76,23 @@ class ChatViewModel: ObservableObject {
         }
 
         return title
+    }
+
+    func getImages(messages: [Message]) -> [String] {
+        var images: [String] = []
+        var userIds: [String] = []
+
+        for message in messages {
+            let id = message.user.id
+
+            // 自分のIDの場合、またはIDが重複する場合はスキップ
+            if  User.currentUser.id == id || userIds.contains(id) { continue }
+
+            userIds.append(id)
+            
+            let image = message.user.image
+            images.append(image)
+        }
+        return images
     }
 }
