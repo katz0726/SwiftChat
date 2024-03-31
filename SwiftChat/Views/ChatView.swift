@@ -11,6 +11,7 @@ import SwiftUI
 struct ChatView: View {
     @State private var textFieldText: String = ""
     @FocusState private var textFieldFocused: Bool
+    @Environment(\.dismiss) private var dismiss
 
     @ObservedObject var vm: ChatViewModel = ChatViewModel()
     var body: some View {
@@ -53,8 +54,14 @@ extension ChatView {
 
     private var navigationArea: some View {
         HStack {
-            Image(systemName: "chevron.backward")
-                .font(.title2)
+            Button {
+                dismiss()
+            } label: {
+                Image(systemName: "chevron.backward")
+                    .font(.title2)
+                    .foregroundColor(.primary)
+            }
+
             Text("Title")
                 .font(.title2.bold())
             Spacer()
