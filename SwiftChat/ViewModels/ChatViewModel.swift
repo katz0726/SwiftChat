@@ -11,11 +11,9 @@ import Foundation
 class ChatViewModel: ObservableObject {
 
     @Published var chatData: [Chat] = []
-    @Published var messages: [Message] = []
 
     init() {
         chatData = fetchChatData()
-        messages = chatData[0].messages
     }
 
     private func fetchChatData() -> [Chat] {
