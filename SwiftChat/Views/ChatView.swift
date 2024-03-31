@@ -13,6 +13,8 @@ struct ChatView: View {
     @FocusState private var textFieldFocused: Bool
     @Environment(\.dismiss) private var dismiss
 
+    let chat: Chat
+
     @ObservedObject var vm: ChatViewModel = ChatViewModel()
     var body: some View {
         VStack(spacing: 0) {
@@ -26,16 +28,16 @@ struct ChatView: View {
     }
 }
 
-#Preview {
-    ChatView()
-}
+//#Preview {
+//    ChatView()
+//}
 
 extension ChatView {
     private var messageArea: some View {
         ScrollViewReader { proxy in
             ScrollView {
                 VStack(spacing: 0) {
-                    ForEach(vm.messages) { message in
+                    ForEach(chat.messages) { message in
                         MessageRow(message: message)
                     }
                 }
