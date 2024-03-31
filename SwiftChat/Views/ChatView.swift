@@ -12,10 +12,10 @@ struct ChatView: View {
     @State private var textFieldText: String = ""
     @FocusState private var textFieldFocused: Bool
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var vm: ChatViewModel
 
     let chat: Chat
 
-    @ObservedObject var vm: ChatViewModel = ChatViewModel()
     var body: some View {
         VStack(spacing: 0) {
             // Message Area
@@ -110,7 +110,7 @@ extension ChatView {
 
     private func sendMessage() {
         if !textFieldText.isEmpty {
-            vm.addMessage(text: textFieldText)
+            vm.addMessage(chatId: chat.id, text: textFieldText)
             textFieldText = ""
         }
     }

@@ -39,7 +39,7 @@ extension ListView {
             HStack(spacing: 16) {
                 Image(systemName: "text.badge.checkmark")
                 Image(systemName: "square")
-                Image(systemName: "ellipse.bubble")
+                Image(systemName: "ellipsis.bubble")
             }
             .font(.title2)
         }
@@ -51,6 +51,7 @@ extension ListView {
                 ForEach(vm.chatData) { chat in
                     NavigationLink {
                         ChatView(chat: chat)
+                            .environmentObject(vm)
                             .toolbar(.hidden)
                     } label: {
                         listRow(chat: chat)
@@ -66,7 +67,7 @@ extension ListView {
                 .resizable()
                 .frame(width: 48, height: 48)
                 .clipShape(Circle())
-            VStack {
+            VStack(alignment: .leading) {
                 Text("タイトル")
                     .foregroundColor(.primary)
                 Text(chat.recentMessageText)
@@ -75,7 +76,7 @@ extension ListView {
                     .lineLimit(1)
             }
             Spacer()
-            Text("12/31")
+            Text(chat.recentMessageDateString)
                 .font(.caption)
                 .foregroundColor(Color(uiColor: .secondaryLabel))
         }
