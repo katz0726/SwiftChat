@@ -54,6 +54,9 @@ extension ChatView {
             .onChange(of: chat.messages) {
                 scrollToBelow(proxy: proxy, smooth: true)
             }
+            .onReceive(NotificationCenter.default.publisher(for: UIResponder.keyboardDidShowNotification)) { _ in
+                scrollToBelow(proxy: proxy, smooth: true)
+            }
         }
     }
 
